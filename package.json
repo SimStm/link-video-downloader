@@ -1,0 +1,17 @@
+{
+  "name": "link-video-downloader",
+  "version": "0.1.0",
+  "description": "Download links from sites, searching for elements",
+  "main": "index.js",
+  "dependencies": {
+    "got": "^11.8.2",
+    "http2-wrapper": "^2.0.5",
+    "lodash": "^4.17.21",
+    "puppeteer": "^9.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lucas Sims",
+  "license": "ISC"
+}
