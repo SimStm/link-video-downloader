@@ -1,8 +1,8 @@
-const got = require("got");
+const got = require('got');
 
 var fs = require('fs')
-const stream = require("stream");
-const { promisify } = require("util");
+const stream = require('stream');
+const { promisify } = require('util');
 const pipeline = promisify(stream.pipeline);
 
 exports.downloadFileGot = async (name, link, folder = './downloads', consoleNewLine = true, showProgress = true) => {
@@ -15,7 +15,7 @@ exports.downloadFileGot = async (name, link, folder = './downloads', consoleNewL
         const fileStream = fs.createWriteStream(`${folder}/${name}`);
 
         var lastPercentageUsed = -1;
-        downloadStream.on("downloadProgress", ({ transferred, total, percent }) => {
+        downloadStream.on('downloadProgress', ({ transferred, total, percent }) => {
         const percentage = Math.round(percent * 100);
         if(showProgress &&
             (total !== 0 && total !== undefined) &&
@@ -23,11 +23,11 @@ exports.downloadFileGot = async (name, link, folder = './downloads', consoleNewL
             lastPercentageUsed = percentage;
             process.stdout.write(`[PROGRESS | ${transferred}/${total} (${percentage}%)]${(consoleNewLine ? '\n' : '')}`);
         }
-        }).on("error", (error) => {
+        }).on('error', (error) => {
             process.stdout.write(`[FALHA!] (${error.message})${(consoleNewLine ? '\n' : '')}`);
         });
 
-        fileStream.on("finish", () => {
+        fileStream.on('finish', () => {
             process.stdout.write(`[SUCESSO!]${(consoleNewLine ? '\n' : '')}`);
         });
 
